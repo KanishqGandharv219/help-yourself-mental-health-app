@@ -269,7 +269,7 @@ This project is licensed under the MIT License - see the [LICENSE](app/compose-c
 
 **Kanishq Gandharv**
 
-- Email: lambiengcode@gmail.com
+- Email: kanishqgandharv@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -298,7 +298,7 @@ This app includes mental health resources and crisis helplines for India:
 
 For issues, questions, or contributions:
 - Open an issue on GitHub
-- Contact: lambiengcode@gmail.com
+- Contact: kanishqgandharv@gmail.com
 
 ---
 
