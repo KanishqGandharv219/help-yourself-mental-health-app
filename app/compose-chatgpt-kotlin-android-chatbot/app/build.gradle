@@ -1,0 +1,285 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    // DI (Room via KSP, Hilt via KAPT to work around KSP + Kotlin 2.1 crash)
+    id 'com.google.devtools.ksp'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlinx-serialization'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.plugin.compose'
+}
+
+// Reuse the Compose version declared in the root build.gradle
+def compose_version = rootProject.ext.compose_version
+def kotlin_version = '2.1.21'
+def hilt_version = rootProject.ext.hilt_version
+def room_version = '2.7.2'
+def maps_compose_version = '2.12.0'
+def play_services_version = '21.1.0'
+
+// Load local.properties (for secrets like GEMINI_API_KEY and TAVILY_API_KEY)
+def localProps = new Properties()
+def localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    localProps.load(new FileInputStream(localPropsFile))
+}
+def geminiApiKey = localProps["GEMINI_API_KEY"] ?: ""
+def tavilyApiKey = localProps["TAVILY_API_KEY"] ?: ""
+
+ksp {
+    arg("dagger.hilt.disableModulesHaveInstallInCheck", "true")
+    arg("ksp.incremental", "false")
+    arg("room.schemaLocation", "$projectDir/schemas")
+    arg("room.incremental", "true")
+    arg("room.expandProjection", "true")
+}
+
+android {
+    namespace 'com.helpyourself.com'
+    compileSdk 35
+
+    buildFeatures {
+        buildConfig = true
+        compose = true
+    }
+
+    defaultConfig {
+        applicationId "com.helpyourself.com"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                    "room.schemaLocation": "$projectDir/schemas".toString(),
+                    "room.incremental": "true"
+                ]
+            }
+        }
+    }
+
+    buildFeatures {
+        compose true
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:5000/\""
+            buildConfigField "String", "GEMINI_API_KEY", "\"${geminiApiKey}\""
+            buildConfigField "String", "TAVILY_API_KEY", "\"${tavilyApiKey}\""
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            crunchPngs true
+            minifyEnabled true
+            shrinkResources true
+            multiDexEnabled true
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:5000/\""
+            buildConfigField "String", "GEMINI_API_KEY", "\"${geminiApiKey}\""
+            buildConfigField "String", "TAVILY_API_KEY", "\"${tavilyApiKey}\""
+            debuggable true
+            minifyEnabled false
+            multiDexEnabled true
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+        freeCompilerArgs += [
+            '-Xjvm-default=all',
+            '-opt-in=kotlin.RequiresOptIn'
+        ]
+    }
+    
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    
+    // Disable incremental resource processing
+    aaptOptions {
+        cruncherEnabled = false
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.compose.material3:material3:1.1.2'
+    implementation "androidx.compose.ui:ui-viewbinding:$compose_version"
+    implementation "androidx.compose.ui:ui-util:$compose_version"
+    // Icons artifacts stopped at 1.7.x, so pin this single dependency to the latest available version
+    implementation "androidx.compose.material:material-icons-core:1.7.2"
+    // Full extended Material icon set (last released at 1.7.x)
+    implementation "androidx.compose.material:material-icons-extended:1.7.2"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3"
+    // FirebaseUI Auth for drop-in sign-in screens
+    implementation "com.firebaseui:firebase-ui-auth:9.0.0"
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    def nav_version = "2.7.6"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    // System bars customization
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.32.0"
+    implementation "androidx.compose.ui:ui-viewbinding:$compose_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0"
+
+    // Dependency injection
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation "androidx.hilt:hilt-navigation-compose:1.1.0"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // Networking
+    def retrofit_version = '2.9.0'
+    def okhttp_version = '4.12.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // UI/UX Utils
+    def richtext_version = '0.17.0'
+    implementation "com.halilibo.compose-richtext:richtext-commonmark:${richtext_version}"
+    implementation "com.halilibo.compose-richtext:richtext-ui-material:${richtext_version}"
+    implementation "com.halilibo.compose-richtext:richtext-ui-material3:${richtext_version}"
+
+    // Room Database
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    // Classic Material Components library (provides ShapeAppearance attrs such as cornerFamily)
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // Maps & Location
+    implementation "com.google.android.libraries.places:places:4.1.0"
+    implementation "com.google.maps.android:maps-compose:$maps_compose_version"
+    implementation "com.google.android.gms:play-services-maps:19.0.0"
+    implementation "com.google.android.gms:play-services-location:$play_services_version"
+    
+    // Permissions handling
+    implementation "com.google.accompanist:accompanist-permissions:0.32.0"
+
+    // Firebase BoM ensures compatible versions for all Firebase libraries
+    implementation platform('com.google.firebase:firebase-bom:33.15.0')
+
+    // Firebase Authentication (Kotlin extensions)
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    
+    // Firebase Realtime Database
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+    // Google Sign-In (required for Google auth provider)
+    implementation 'com.google.android.gms:play-services-auth:21.1.0'
+}
+
+// Add this at the end of the file
+tasks.register('cleanKspGeneratedSources', Delete) {
+    delete fileTree("${buildDir}/generated/ksp/") {
+        include '**/*'
+    }
+    doLast {
+        println "Cleaned KSP generated sources"
+    }
+}
+
+tasks.register('forceCleanKsp', Delete) {
+    delete fileTree("${buildDir}/generated/ksp/") {
+        include '**/*'
+    }
+    doLast {
+        println "Force cleaned KSP directories"
+        def kspDir = new File("${buildDir}/generated/ksp/debug/java")
+        if (kspDir.exists()) {
+            if (!kspDir.deleteDir()) {
+                kspDir.listFiles().each { file ->
+                    file.deleteOnExit()
+                }
+                println "Marked KSP files for deletion on JVM exit"
+            }
+        }
+    }
+}
+
+tasks.named('clean').configure {
+    dependsOn(cleanKspGeneratedSources)
+}
+
+// Run this task when you encounter the deletion error
+tasks.register('cleanAndRebuild') {
+    dependsOn('clean', 'forceCleanKsp')
+    doLast {
+        println "Cleaned project and KSP directories"
+    }
+}
+
+task forceCleanBuild {
+    doLast {
+        def buildDir = new File("${project.projectDir}/build")
+        if (buildDir.exists()) {
+            println "Attempting to force delete ${buildDir}"
+            // Try multiple deletion strategies
+            if (!buildDir.deleteDir()) {
+                // If normal deletion fails, try with Java NIO
+                println "Normal deletion failed, trying with Java NIO"
+                try {
+                    java.nio.file.Files.walk(buildDir.toPath())
+                        .sorted(java.util.Comparator.reverseOrder())
+                        .forEach { path ->
+                            try {
+                                java.nio.file.Files.deleteIfExists(path)
+                            } catch (Exception e) {
+                                println "Could not delete: ${path}, will try on exit"
+                                path.toFile().deleteOnExit()
+                            }
+                        }
+                    println "Cleanup completed with NIO"
+                } catch (Exception e) {
+                    println "NIO cleanup failed: ${e.message}"
+                    // Last resort: mark for deletion on JVM exit
+                    buildDir.deleteOnExit()
+                }
+            } else {
+                println "Successfully deleted ${buildDir}"
+            }
+        }
+    }
+}
+
+// Make clean depend on our force clean task
+clean.dependsOn forceCleanBuild
+clean.dependsOn forceCleanBuild

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        .user {
+            background-color: #e9f5ff;
+            text-align: right;
+        }
+        .assistant {
+            background-color: #f0f0f0;
+        }
+        #chat-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        #message-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            color: #999;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat API Test</h1>
+    <div id="status">Server status: Checking...</div>
+    <div id="chat-container"></div>
+    <form id="chat-form">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        // Session ID for the chat
+        const sessionId = "browser-test-" + Math.random().toString(36).substring(2, 10);
+        const chatContainer = document.getElementById('chat-container');
+        const messageInput = document.getElementById('message-input');
+        const statusElement = document.getElementById('status');
+        const form = document.getElementById('chat-form');
+
+        // Check server status
+        fetch('http://localhost:5001/health')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Server not responding');
+            })
+            .then(data => {
+                statusElement.textContent = `Server status: Online - ${JSON.stringify(data)}`;
+                statusElement.style.color = '#4CAF50';
+            })
+            .catch(error => {
+                statusElement.textContent = `Server status: Offline - ${error.message}`;
+                statusElement.style.color = '#f44336';
+            });
+
+        // Add a message to the chat
+        function addMessage(text, isUser) {
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${isUser ? 'user' : 'assistant'}`;
+            messageElement.textContent = text;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Send a message to the server
+        async function sendMessage(message) {
+            try {
+                const response = await fetch('http://localhost:5001/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        chat_type: "GENERAL",
+                        session_id: sessionId
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                addMessage(data.response, false);
+                return data.response;
+            } catch (error) {
+                console.error('Error sending message:', error);
+                addMessage(`Error: ${error.message}`, false);
+                return null;
+            }
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                messageInput.value = '';
+                messageInput.disabled = true;
+                await sendMessage(message);
+                messageInput.disabled = false;
+                messageInput.focus();
+            }
+        });
+
+        // Focus the input field on page load
+        messageInput.focus();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,30 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/app/src/main/res/values/secrets.xml
+
+# Firebase configuration files (contain API keys and OAuth client IDs)
+app/google-services.json
+/app/google-services.json
+app/src/main/google-services.json
+/app/src/main/google-services.json
+
+# API key files
+tavilyservice_current.txt
+/tavilyservice_current.txt
+
+# Note: NetworkModule.kt contains a hardcoded TAVILY_API_KEY
+# This file cannot be excluded as it's source code, but the API key should be
+# moved to local.properties or BuildConfig in production

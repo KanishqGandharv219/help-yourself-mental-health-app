@@ -1,0 +1,61 @@
+# Root .gitignore for the entire project
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Server logs and debug files
+*.log
+server/debug_log.txt
+server/server_log.txt
+server/server_logs.txt
+ollama_rag/test_output.txt
+temp.txt
+test.txt
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+server/chroma_db/
+
+# Jupyter Notebooks
+*.ipynb_checkpoints
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Android specific (handled in app/.gitignore)
+# But also exclude at root level for safety
+app/compose-chatgpt-kotlin-android-chatbot/local.properties
+app/compose-chatgpt-kotlin-android-chatbot/app/google-services.json
+app/compose-chatgpt-kotlin-android-chatbot/app/src/main/google-services.json
+app/compose-chatgpt-kotlin-android-chatbot/app/src/main/res/values/secrets.xml
+app/compose-chatgpt-kotlin-android-chatbot/tavilyservice_current.txt
+
+# Temporary files
+temp_dir/
+
+# Model files (if large)
+fine_tuned/*.safetensors
+fine_tuned/*.bin
+

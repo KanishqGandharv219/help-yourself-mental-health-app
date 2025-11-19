@@ -1,0 +1,24 @@
+{
+    "rules": {
+      "mental_health_metrics": {
+        "$userId": {
+          ".read": "auth != null && auth.uid === $userId",
+          ".write": "auth != null && auth.uid === $userId",
+          "$metricId": {
+            ".validate": "newData.hasChildren(['timestamp','depression','anxiety','stress']) && newData.child('timestamp').isNumber() && newData.child('depression').isNumber() && newData.child('depression').val() >= 0 && newData.child('depression').val() <= 10 && newData.child('anxiety').isNumber() && newData.child('anxiety').val() >= 0 && newData.child('anxiety').val() <= 10 && newData.child('stress').isNumber() && newData.child('stress').val() >= 0 && newData.child('stress').val() <= 10"
+          },
+          ".indexOn": ["timestamp"]
+        }
+      },
+      "assessment_questions": {
+        ".read": "auth != null",
+        ".write": false
+      },
+      "assessment_answers": {
+        "$userId": {
+          ".read": "auth != null && auth.uid === $userId",
+          ".write": "auth != null && auth.uid === $userId"
+        }
+      }
+    }
+  }
