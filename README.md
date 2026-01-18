@@ -16,17 +16,45 @@ A comprehensive Android application designed to provide mental health support, w
 
 ### Core Features
 - 🤖 **AI Chat Assistant**: Conversational AI with context-aware responses using RAG
-- 📊 **Mental Health Assessments**: 
+<img width="1080" height="2400" alt="Screenshot_20250703_022714" src="https://github.com/user-attachments/assets/1bc1a23e-de83-4b20-bc32-a8eeaec285ae" />
+<img width="1080" height="2400" alt="Screenshot_20250703_022323" src="https://github.com/user-attachments/assets/31c74e6a-eb1c-4061-9959-72d825904379" />
+<img width="1080" height="2400" alt="Screenshot_20250703_022323" src="https://github.com/user-attachments/assets/6704a397-afef-4b4c-be3d-b2a89606f1a0" />
+<img width="1080" height="2400" alt="Screenshot_20250703_022558" src="https://github.com/user-attachments/assets/9f32f6e0-07a3-4bc9-9bd6-748f76803ca8" />
+<img width="1080" height="2400" alt="Screenshot_20250703_022639" src="https://github.com/user-attachments/assets/127cc415-2e62-4cd3-ab48-3fec178ca0bc" />
+
+- 📊 **Mental Health Assessments**: <img width="1080" height="2400" alt="Screenshot_20250703_022911" src="https://github.com/user-attachments/assets/5ced87c2-f732-4459-9aa8-d8f34e169258" />
+<img width="1080" height="2400" alt="Screenshot_20250703_022937" src="https://github.com/user-attachments/assets/26caca83-4d3d-43a5-941f-0d506d57f567" />
+
   - Depression Test (PHQ-9 based)
+  <img width="1080" height="2400" alt="Screenshot_20250703_023158" src="https://github.com/user-attachments/assets/38babcff-f79f-4a64-a011-0c42e53d0e87" />
+
   - Anxiety Test (GAD-7 based)
+  <img width="1080" height="2400" alt="Screenshot_20250703_023219" src="https://github.com/user-attachments/assets/a1a28dac-6ff9-446d-9612-c6aefc6ece76" />
+
   - Stress Test
+  <img width="1080" height="2400" alt="Screenshot_20250703_023233" src="https://github.com/user-attachments/assets/d48559f5-2f21-4624-bdb4-7151d1635e84" />
+
 - 📈 **Wellness Tracking**: Track depression, anxiety, and stress levels over time
+<img width="1080" height="2400" alt="Screenshot_20250703_023507" src="https://github.com/user-attachments/assets/ca68d92e-c559-401c-8889-1a35a3acce65" />
+
 - 🗺️ **Nearby Resources**: Find therapy centers and mental health facilities using Google Maps
+<img width="1080" height="2400" alt="Screenshot_20250703_023118" src="https://github.com/user-attachments/assets/c70e8709-5772-4043-a346-9efb9e6598fc" />
+
 - 📚 **Resource Library**: Access mental health and academic resources
+<img width="1080" height="2400" alt="Screenshot_20250703_022747" src="https://github.com/user-attachments/assets/89429edf-7ae1-4a34-a7ad-14fd57908d43" />
+
 - 🧘 **Breathing Exercises**: Guided breathing exercises for stress relief
+![Screenshot_2026-01-18-10-43-57-77_957b39ce7caa0d8ecb2d9a9eb9b96f66](https://github.com/user-attachments/assets/09cf43a2-7330-4cc5-affd-9dd4753611d3)
+
 - 📝 **Personalized Reviews**: AI-generated personalized mental health reviews using Google Gemini
+<img width="1080" height="2400" alt="Screenshot_20250703_023547" src="https://github.com/user-attachments/assets/3f9ef0c9-8fb3-44c7-bd34-5d64c6fba105" />
+
 - 🔍 **Web Search Integration**: Tavily API integration for real-time information retrieval
+<img width="391" height="129" alt="image" src="https://github.com/user-attachments/assets/347529ea-528c-4357-9d9d-6eb5468183f4" />
+
 - 🔐 **Firebase Authentication**: Secure user authentication with Google, Email, and Phone sign-in
+<img width="640" height="640" alt="image" src="https://github.com/user-attachments/assets/2ac8a937-780a-4994-ac9b-83d2c96d33b8" />
+<img width="1080" height="2400" alt="Screenshot_20250703_022836" src="https://github.com/user-attachments/assets/d1cac759-21c2-4dac-b1e5-ecd7ab189ce4" />
 
 ### Technical Features
 - **Modern Android Architecture**: MVVM pattern with Jetpack Compose
