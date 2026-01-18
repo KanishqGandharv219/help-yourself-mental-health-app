@@ -22,7 +22,8 @@ A comprehensive Android application designed to provide mental health support, w
 <img width="108" height="240" alt="Screenshot_20250703_022558" src="https://github.com/user-attachments/assets/9f32f6e0-07a3-4bc9-9bd6-748f76803ca8" />
 <img width="108" height="240" alt="Screenshot_20250703_022639" src="https://github.com/user-attachments/assets/127cc415-2e62-4cd3-ab48-3fec178ca0bc" />
 
-- 📊 **Mental Health Assessments**: <img width="108" height="240" alt="Screenshot_20250703_022911" src="https://github.com/user-attachments/assets/5ced87c2-f732-4459-9aa8-d8f34e169258" />
+- 📊 **Mental Health Assessments**:
+<img width="108" height="240" alt="Screenshot_20250703_022911" src="https://github.com/user-attachments/assets/5ced87c2-f732-4459-9aa8-d8f34e169258" />
 <img width="108" height="240" alt="Screenshot_20250703_022937" src="https://github.com/user-attachments/assets/26caca83-4d3d-43a5-941f-0d506d57f567" />
 
   - Depression Test (PHQ-9 based)
