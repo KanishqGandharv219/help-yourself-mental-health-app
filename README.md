@@ -16,7 +16,7 @@ A comprehensive Android application designed to provide mental health support, w
 
 ### Core Features
 - 🤖 **AI Chat Assistant**: Conversational AI with context-aware responses using RAG
-<img width="1080" height="2400" alt="Screenshot_20250703_022714" src="https://github.com/user-attachments/assets/1bc1a23e-de83-4b20-bc32-a8eeaec285ae" />
+<img width="108" height="240" alt="Screenshot_20250703_022714" src="https://github.com/user-attachments/assets/1bc1a23e-de83-4b20-bc32-a8eeaec285ae" />
 <img width="1080" height="2400" alt="Screenshot_20250703_022323" src="https://github.com/user-attachments/assets/31c74e6a-eb1c-4061-9959-72d825904379" />
 <img width="1080" height="2400" alt="Screenshot_20250703_022323" src="https://github.com/user-attachments/assets/6704a397-afef-4b4c-be3d-b2a89606f1a0" />
 <img width="1080" height="2400" alt="Screenshot_20250703_022558" src="https://github.com/user-attachments/assets/9f32f6e0-07a3-4bc9-9bd6-748f76803ca8" />
