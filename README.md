@@ -54,7 +54,7 @@ A comprehensive Android application designed to provide mental health support, w
 <img width="391" height="129" alt="image" src="https://github.com/user-attachments/assets/347529ea-528c-4357-9d9d-6eb5468183f4" />
 
 - 🔐 **Firebase Authentication**: Secure user authentication with Google, Email, and Phone sign-in
-<img width="64" height="64" alt="image" src="https://github.com/user-attachments/assets/2ac8a937-780a-4994-ac9b-83d2c96d33b8" />
+<img width="240" height="240" alt="image" src="https://github.com/user-attachments/assets/2ac8a937-780a-4994-ac9b-83d2c96d33b8" />
 <img width="108" height="240" alt="Screenshot_20250703_022836" src="https://github.com/user-attachments/assets/d1cac759-21c2-4dac-b1e5-ecd7ab189ce4" />
 
 ### Technical Features
