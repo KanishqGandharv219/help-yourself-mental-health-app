@@ -12,17 +12,17 @@ A comprehensive Android application designed to provide mental health support, w
 - **Educational Resources**: Access curated mental health and academic resources
 - **Crisis Support**: Built-in crisis detection and helpline information for India
 
-## ✨ Features
+## Features
 
 ### Core Features
-- 🤖 **AI Chat Assistant**: Conversational AI with context-aware responses using RAG
+- **AI Chat Assistant**: Conversational AI with context-aware responses using RAG
 <img width="108" height="240" alt="Screenshot_20250703_022714" src="https://github.com/user-attachments/assets/1bc1a23e-de83-4b20-bc32-a8eeaec285ae" />
 <img width="108" height="240" alt="Screenshot_20250703_022323" src="https://github.com/user-attachments/assets/31c74e6a-eb1c-4061-9959-72d825904379" />
 <img width="108" height="240" alt="Screenshot_20250703_022323" src="https://github.com/user-attachments/assets/6704a397-afef-4b4c-be3d-b2a89606f1a0" />
 <img width="108" height="240" alt="Screenshot_20250703_022558" src="https://github.com/user-attachments/assets/9f32f6e0-07a3-4bc9-9bd6-748f76803ca8" />
 <img width="108" height="240" alt="Screenshot_20250703_022639" src="https://github.com/user-attachments/assets/127cc415-2e62-4cd3-ab48-3fec178ca0bc" />
 
-- 📊 **Mental Health Assessments**:
+- **Mental Health Assessments**:
 <img width="108" height="240" alt="Screenshot_20250703_022911" src="https://github.com/user-attachments/assets/5ced87c2-f732-4459-9aa8-d8f34e169258" />
 <img width="108" height="240" alt="Screenshot_20250703_022937" src="https://github.com/user-attachments/assets/26caca83-4d3d-43a5-941f-0d506d57f567" />
 
@@ -35,25 +35,25 @@ A comprehensive Android application designed to provide mental health support, w
   - Stress Test
   <img width="108" height="240" alt="Screenshot_20250703_023233" src="https://github.com/user-attachments/assets/d48559f5-2f21-4624-bdb4-7151d1635e84" />
 
-- 📈 **Wellness Tracking**: Track depression, anxiety, and stress levels over time
+- **Wellness Tracking**: Track depression, anxiety, and stress levels over time
 <img width="108" height="240" alt="Screenshot_20250703_023507" src="https://github.com/user-attachments/assets/ca68d92e-c559-401c-8889-1a35a3acce65" />
 
-- 🗺️ **Nearby Resources**: Find therapy centers and mental health facilities using Google Maps
+- **Nearby Resources**: Find therapy centers and mental health facilities using Google Maps
 <img width="108" height="240" alt="Screenshot_20250703_023118" src="https://github.com/user-attachments/assets/c70e8709-5772-4043-a346-9efb9e6598fc" />
 
-- 📚 **Resource Library**: Access mental health and academic resources
+- **Resource Library**: Access mental health and academic resources
 <img width="108" height="240" alt="Screenshot_20250703_022747" src="https://github.com/user-attachments/assets/89429edf-7ae1-4a34-a7ad-14fd57908d43" />
 
-- 🧘 **Breathing Exercises**: Guided breathing exercises for stress relief
+- **Breathing Exercises**: Guided breathing exercises for stress relief
 <img width="108" height="240" alt="Screenshot_2026-01-18-10-43-57-77_957b39ce7caa0d8ecb2d9a9eb9b96f66" src="https://github.com/user-attachments/assets/09cf43a2-7330-4cc5-affd-9dd4753611d3" />
 
-- 📝 **Personalized Reviews**: AI-generated personalized mental health reviews using Google Gemini
+- **Personalized Reviews**: AI-generated personalized mental health reviews using Google Gemini
 <img width="108" height="240" alt="Screenshot_20250703_023547" src="https://github.com/user-attachments/assets/3f9ef0c9-8fb3-44c7-bd34-5d64c6fba105" />
 
-- 🔍 **Web Search Integration**: Tavily API integration for real-time information retrieval
+- **Web Search Integration**: Tavily API integration for real-time information retrieval
 <img width="391" height="129" alt="image" src="https://github.com/user-attachments/assets/347529ea-528c-4357-9d9d-6eb5468183f4" />
 
-- 🔐 **Firebase Authentication**: Secure user authentication with Google, Email, and Phone sign-in
+- **Firebase Authentication**: Secure user authentication with Google, Email, and Phone sign-in
 <img width="240" height="240" alt="image" src="https://github.com/user-attachments/assets/2ac8a937-780a-4994-ac9b-83d2c96d33b8" />
 <img width="108" height="240" alt="Screenshot_20250703_022836" src="https://github.com/user-attachments/assets/d1cac759-21c2-4dac-b1e5-ecd7ab189ce4" />
 
@@ -65,7 +65,7 @@ A comprehensive Android application designed to provide mental health support, w
 - **Real-time Data**: Firebase Realtime Database for data synchronization
 - **Offline Support**: Local caching and offline capabilities
 
-## 🏗️ Architecture
+## Architecture
 
 ### Android App
 - **Language**: Kotlin
@@ -83,7 +83,7 @@ A comprehensive Android application designed to provide mental health support, w
 - **RAG**: LangChain with Ollama embeddings
 - **CORS**: Enabled for cross-origin requests
 
-## 📋 Prerequisites
+## Prerequisites
 
 ### For Android Development
 - Android Studio Hedgehog (2023.1.1) or later
@@ -102,7 +102,7 @@ A comprehensive Android application designed to provide mental health support, w
 - **Google Gemini API**: For personalized reviews
 - **Tavily API**: For web search integration
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -173,7 +173,7 @@ python server.py
 # Server runs on http://localhost:5002
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 final/
@@ -209,7 +209,7 @@ final/
 └── README.md                          # This file
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -235,7 +235,7 @@ TAVILY_API_KEY=your_tavily_api_key
 
 3. Configure OAuth clients for Google Sign-In
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Android
 - **Jetpack Compose**: Modern declarative UI framework
@@ -259,14 +259,14 @@ TAVILY_API_KEY=your_tavily_api_key
 - **Tavily API**: Web search
 - **Google Maps API**: Location services
 
-## 🔒 Security
+## Security
 
 - All API keys are stored in `local.properties` (excluded from Git)
 - Firebase security rules implemented
 - No sensitive data in source code
 - See `SECURITY.md` for more details
 
-## 📝 Development Notes
+## Development Notes
 
 ### Running the Backend
 The backend server must be running for the app to function properly. Default port is `5002`.
@@ -280,7 +280,7 @@ The backend server must be running for the app to function properly. Default por
 ./gradlew assembleRelease
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -290,17 +290,17 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](app/compose-chatgpt-kotlin-android-chatbot/LICENSE) file for details.
 
-## 👤 Author
+## Author
 
 **Kanishq Gandharv**
 
 - Email: kanishqgandharv@gmail.com
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
 - [Firebase](https://firebase.google.com/)
@@ -308,7 +308,7 @@ This project is licensed under the MIT License - see the [LICENSE](app/compose-c
 - [LangChain](https://www.langchain.com/)
 - [Material Design 3](https://m3.material.io/)
 
-## ⚠️ Important Notes
+## Important Notes
 
 ### Crisis Support
 This app includes mental health resources and crisis helplines for India:
@@ -323,7 +323,7 @@ This app includes mental health resources and crisis helplines for India:
 - All sensitive keys are stored in `local.properties` which is excluded via `.gitignore`
 - Create your own API keys from respective providers
 
-## 📞 Support
+## Support
 
 For issues, questions, or contributions:
 - Open an issue on GitHub
@@ -332,4 +332,3 @@ For issues, questions, or contributions:
 ---
 
 **Made with ❤️ for mental health awareness and support**
-
