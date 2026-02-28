@@ -2,7 +2,7 @@
 
 A comprehensive Android application designed to provide mental health support, wellness tracking, and AI-powered assistance. Built with modern Android development practices and a Python backend server with RAG (Retrieval Augmented Generation) capabilities.
 
-## 📱 Overview
+## Overview
 
 **Help Yourself** (also known as Custom AI Assistant) is an intelligent mental health companion app that combines:
 - **AI-Powered Conversations**: Chat with an empathetic AI assistant powered by local Ollama models with RAG
